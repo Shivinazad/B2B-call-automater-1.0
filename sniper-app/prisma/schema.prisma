@@ -1,0 +1,79 @@
+// Prisma Schema for IndiaMART Sniper
+// Database: PostgreSQL (Supabase)
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. Core User Request (The final state after the chatbot finishes interrogating the user)
+model SourcingRequest {
+  id               String   @id @default(cuid())
+  productName      String
+  specifications   String   
+  targetQuantity   Int
+  isGlobal         Boolean  @default(false)
+  status           String   // 'chatting', 'searching', 'calling', 'completed'
+  
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  chats            ChatHistory[]    // The back-and-forth interrogations
+  documents        Document[]       // Uploaded designs/images
+  vendors          VendorCampaign[] // Target vendors found
+}
+
+// 2. Chatbot History
+model ChatHistory {
+  id          String   @id @default(cuid())
+  requestId   String
+  request     SourcingRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  role        String   // 'user' or 'ai'
+  message     String   // AI probing questions or user answers
+  createdAt   DateTime @default(now())
+}
+
+// 3. Document / Image Storage
+model Document {
+  id          String   @id @default(cuid())
+  requestId   String
+  request     SourcingRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  fileName    String
+  fileData    String   // Base64 or Cloud URL
+  type        String   // 'image', 'pdf', etc.
+  createdAt   DateTime @default(now())
+}
+
+// 4. Vendor Calling & Results
+model VendorCampaign {
+  id              String   @id @default(cuid())
+  requestId       String
+  request         SourcingRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  
+  vendorName      String
+  vendorPhone     String
+  vendorEmail     String?
+  blandCallId     String?  // Links to Bland AI
+  
+  category        String?  // 'cheapest', 'best-rated', 'recommended'
+  finalPriceQuote Float?
+  callStatus      String   // 'pending', 'ringing', 'completed', 'failed'
+  
+  createdAt       DateTime @default(now())
+
+  transcripts     CallTranscript[]
+}
+
+// 5. The Actual Voice AI transcripts
+model CallTranscript {
+  id              String   @id @default(cuid())
+  vendorId        String
+  vendor          VendorCampaign @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  role            String   // 'ai-agent' or 'vendor'
+  text            String   
+  timestamp       DateTime @default(now())
+}

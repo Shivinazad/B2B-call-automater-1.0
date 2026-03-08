@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FDFCF9; /* brand-light */
+    color: #222222; /* brand-dark */
+    @apply antialiased;
+  }
+  
+  /* Sarvam AI: serif italic headings for the light/editorial sections */
+  .serif-heading {
+    font-style: italic;
+    font-family: 'Georgia', serif;
+  }
+
+  /* Soft custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #EAEAEA;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FBCEB1;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-brand-border shadow-sm;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-orange to-brand-peach;
+  }
+
+  .glow-pulse {
+    animation: glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(241, 90, 43, 0.5); }
+  50% { opacity: 0.5; box-shadow: 0 0 5px rgba(241, 90, 43, 0.2); }
+}
+
+/* Base structural fixes */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}

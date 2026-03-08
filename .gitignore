@@ -3,3 +3,8 @@ node_modules/
 *.log
 .env
 .env.local
+sniper-app/node_modules/
+sniper-app/.next/
+sniper-app/*.tsbuildinfo
+sniper-app/dev.log
+sniper-app/prisma/dev.db
