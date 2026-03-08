@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sniper | Comet Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-50 flex justify-center">
+        <div class="w-full max-w-6xl mt-4 flex items-center justify-between bg-white border border-orange-200 px-6 py-3 rounded-full shadow-lg shadow-orange-500/5 nav-container">
+            
+            <div class="flex items-center gap-8">
+                <span class="font-black text-xl tracking-tighter text-black">Sniper</span>
+                
+                <!-- <div class="hidden md:flex gap-4 text-sm font-bold text-neutral-500">
+                    <a href="#" class="nav-link px-4 py-2 transition-all">Solutions</a>
+                    <a href="#" class="nav-link px-4 py-2 transition-all">Enterprise</a>
+                    <a href="#" class="nav-link px-4 py-2 transition-all">Resources</a>
+                </div> -->
+            </div>
+    
+            <div class="flex items-center gap-3">
+                <a href="login.html" class="text-xs font-black uppercase tracking-widest text-neutral-400 hover:text-orange-600 transition-colors">Log in</a>
+                <a href="signup.html" class="bg-black text-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-orange-600 transition-all shadow-md">
+                    SignUp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-y-12 items-center mb-24">
+    
+            <div class="md:col-span-7 space-y-8">
+                <h1 class="text-7xl font-bold tracking-tight leading-[0.95]" data-i18n="hero_title">
+                    Bringing sourcing <br> to life
+                </h1>
+                <p class="text-xl text-neutral-400 max-w-md leading-relaxed" data-i18n="hero_desc">
+                    The world's most advanced B2B negotiation agent. Find, call, and close deals on Sniper automatically.
+                </p>
+                <div class="flex gap-4">
+                    <button class="bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-all"><a href=signup.html>Sniping</a></button>
+                    <button class="border border-neutral-200 px-8 py-4 rounded-full font-bold text-lg hover:bg-neutral-50 transition-all">Contact Sales</button>
+                </div>
+            </div>
+            
+            <div class="md:col-span-5 md:col-start-8">
+                <p class="text-[17px] text-neutral-500 leading-relaxed font-medium max-w-[400px] mx-auto md:ml-auto">
+                    Powering the smartest procurement teams and SMBs. From autonomous sourcing agents for product discovery to real-time negotiation bots, II Sniper simplifies your entire B2B supply chain.
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto bg-[#F9F9F9] rounded-[40px] border border-neutral-100 p-2 md:p-4 shadow-2xl shadow-black/5">
+            <div class="bg-white rounded-[32px] p-8 md:p-12">
+                
+                <div class="flex flex-col md:flex-row gap-4 mb-12">
+                    <input type="text" id="userInput" placeholder="Find me 500 cotton hoodies in Ludhiana under ₹180..." 
+                        class="flex-1 bg-neutral-50 border border-neutral-100 rounded-2xl px-8 py-6 text-xl outline-none focus:bg-white focus:border-black transition-all">
+                    <button id="launchBtn" class="bg-black text-white px-10 py-6 rounded-2xl font-bold text-xl hover:scale-[1.02] active:scale-95 transition-all">
+                        <a href="signup.html">Launch Agent</a>
+                    </button>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="md:col-span-2 space-y-4">
+                        <div class="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-neutral-400">
+                            <span>Autonomous Activity Log</span>
+                            <span id="navStatusText" class="text-neutral-300 italic">Standby</span>
+                        </div>
+                        <div id="logContainer" class="h-64 overflow-y-auto space-y-3 pr-4 custom-scrollbar">
+                            <div class="text-neutral-300 italic">Input your sourcing requirements above...</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-neutral-50 rounded-3xl p-8 border border-neutral-100 flex flex-col justify-center text-center">
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2">Deal Saved</h3>
+                        <div id="dealValue" class="text-6xl font-bold tracking-tighter">₹0</div>
+                        <p class="text-sm text-neutral-500 mt-2">Negotiated Live</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <section class="max-w-6xl mx-auto px-6 py-24 reveal">
+        <div class="grid md:grid-cols-2 gap-12 mb-16 items-end">
+            <h2 class="text-5xl font-bold tracking-tighter leading-[1.1]">
+                Two engines built on the <br> same procurement logic
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-8 border-l border-neutral-100 pl-8">
+                <div class="space-y-2">
+                    <h3 class="font-bold text-sm uppercase tracking-widest text-neutral-400">I Sourcing</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed">Crawl IndiaMart and verify GST in seconds.</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-sm uppercase tracking-widest text-neutral-400">II Negotiator</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed">Secure bulk pricing over live telephony.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="bg-neutral-50 rounded-[48px] border border-neutral-100 p-6 md:p-8">
+            <div class="grid md:grid-cols-2 gap-6">
+                
+                <div class="bg-white rounded-[32px] border border-neutral-200 shadow-sm overflow-hidden h-[450px] flex flex-col">
+                    <div class="p-4 border-b border-neutral-100 flex items-center justify-between">
+                        <div class="flex gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                        </div>
+                        <span class="text-[9px] font-black text-neutral-300 uppercase tracking-widest">ii-sourcing.v2</span>
+                    </div>
+                    <div class="flex-1 p-6 space-y-4 overflow-hidden">
+                        <div class="bg-neutral-50 p-4 rounded-2xl border border-neutral-100">
+                            <div class="flex justify-between text-[10px] font-bold mb-2">
+                                <span>SCANNING LUDHIANA HUBS</span>
+                                <span class="text-blue-600">82%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-neutral-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-600 w-[82%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2 opacity-80">
+                            <div class="flex items-center justify-between p-3 bg-white border border-neutral-100 rounded-xl shadow-sm">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center text-[10px] font-bold text-blue-600">GT</div>
+                                    <span class="text-xs font-bold">Gupta Textiles</span>
+                                </div>
+                                <span class="text-[8px] font-black bg-green-50 text-green-600 px-2 py-0.5 rounded">GST OK</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white border border-neutral-100 rounded-xl shadow-sm">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center text-[10px] font-bold text-orange-600">SK</div>
+                                    <span class="text-xs font-bold">Surat Knits</span>
+                                </div>
+                                <span class="text-[8px] font-black bg-blue-50 text-blue-600 px-2 py-0.5 rounded">VERIFIED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="bg-white rounded-[32px] border border-neutral-200 shadow-sm overflow-hidden h-[450px] flex flex-col">
+                    <div class="p-4 border-b border-neutral-100 flex items-center justify-between">
+                        <span class="text-[10px] font-bold text-blue-600 animate-pulse">● LIVE NEGOTIATION</span>
+                        <span class="text-[10px] font-bold text-neutral-400">Arjun-v2 Agent</span>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col gap-6">
+                        <div class="flex justify-between items-center px-4">
+                            <div class="text-center">
+                                <p class="text-[9px] font-black text-neutral-300 uppercase">Sentiment</p>
+                                <p class="text-xs font-bold text-emerald-500">Positive</p>
+                            </div>
+                            <div class="w-16 h-1 bg-neutral-100 rounded-full relative">
+                                <div class="absolute right-0 w-4 h-1 bg-emerald-500 rounded-full"></div>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-[9px] font-black text-neutral-300 uppercase">Target</p>
+                                <p class="text-xs font-bold text-black">₹168</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-none text-[11px] font-medium ml-8">
+                                "Sir, ₹168 par lock kijiye. Deal pakki hai, hum advance pay karenge."
+                            </div>
+                            <div class="bg-neutral-50 border border-neutral-100 p-3 rounded-2xl rounded-tl-none text-[11px] font-medium mr-8 text-neutral-600">
+                                "Theek hai, order confirm karo. Details bhej do."
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center gap-1 h-8 mt-auto">
+                            <div class="w-1 bg-blue-200 h-4 rounded-full"></div>
+                            <div class="w-1 bg-blue-400 h-8 rounded-full animate-bounce"></div>
+                            <div class="w-1 bg-blue-600 h-6 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+                            <div class="w-1 bg-blue-300 h-8 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+                            <div class="w-1 bg-blue-100 h-4 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 border-y border-neutral-100 overflow-hidden bg-white">
+        <div class="max-w-6xl mx-auto px-6 mb-8 text-center">
+            <p class="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-400">
+                Trusted by the world's most innovative procurement teams
+            </p>
+        </div>
+        
+        <div class="relative flex overflow-x-hidden border-y border-neutral-100 bg-white py-10 group">
+            <div class="flex whitespace-nowrap animate-marquee items-center gap-16 px-8 flex-shrink-0">
+                <span class="logo-item hover-ludhiana">LUDHIANA TEXTILES</span>
+                <span class="logo-item hover-gujarat">GUJARAT STEEL</span>
+                <span class="logo-item hover-tata">TATA MOTORS</span>
+                <span class="logo-item hover-reliance">RELIANCE RETAIL</span>
+                <span class="logo-item hover-adani">ADANI PORTS</span>
+            </div>
+            
+            <div class="flex whitespace-nowrap animate-marquee items-center gap-16 px-8 flex-shrink-0">
+                <span class="logo-item hover-ludhiana">LUDHIANA TEXTILES</span>
+                <span class="logo-item hover-gujarat">GUJARAT STEEL</span>
+                <span class="logo-item hover-tata">TATA MOTORS</span>
+                <span class="logo-item hover-reliance">RELIANCE RETAIL</span>
+                <span class="logo-item hover-adani">ADANI PORTS</span>
+            </div>
+    
+            <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-right from-white to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-left from-white to-transparent z-10 pointer-events-none"></div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-8 items-end mb-16">
+    
+            <div class="md:col-span-7">
+                <h2 class="text-5xl md:text-6xl font-bold tracking-tighter leading-[1.1]">
+                    Source, verify and negotiate <br> in one AI platform
+                </h2>
+            </div>
+        
+            <div class="md:col-span-4 md:col-start-9 border-l border-neutral-100 pl-8 py-2">
+                <p class="text-sm text-neutral-500 font-medium leading-relaxed mb-6">
+                    Our integrated suite handles the complexity of Indian B2B markets automatically, moving you from discovery to deal-closure in a single flow.
+                </p>
+            </div>
+        </div>
+    
+        <div class="grid md:grid-cols-2 gap-6">
+        
+            <div class="reveal relative group overflow-hidden rounded-[32px] border border-neutral-100 bg-white flex flex-col h-[400px] transition-all duration-500 hover:shadow-lg">
+                <div class="p-8 space-y-3 relative z-10">
+                    <div class="bg-black text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full inline-block mb-1">Sourcing</div>
+                    <h3 class="text-2xl font-bold tracking-tight">Sourcing Engine</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed max-w-xs">
+                        Crawl Sniper leads and verify business data in a streamlined editor.
+                    </p>
+                </div>
+                
+                <div class="flex-1 px-8 pb-8 flex flex-col justify-end">
+                    <div class="bg-neutral-50 rounded-2xl border border-neutral-100 p-4 space-y-2 shadow-inner transform transition-transform group-hover:-translate-y-1">
+                        <div class="bg-white p-3 rounded-xl border border-neutral-100 flex items-center justify-between shadow-sm">
+                            <span class="text-[10px] font-bold">Ludhiana Textiles</span>
+                            <span class="text-[8px] font-black text-green-600 bg-green-50 px-2 py-0.5 rounded">GST VERIFIED</span>
+                        </div>
+                        <div class="h-1 w-full bg-neutral-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-orange-500 w-[75%] animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="reveal bg-neutral-50 rounded-[32px] border border-neutral-100 p-8 flex flex-col justify-between h-[400px] transition-all duration-500 hover:bg-white hover:shadow-lg group/neg">
+                <div class="space-y-4">
+                    <div class="bg-white rounded-[20px] border border-neutral-200 p-5 shadow-sm space-y-3 transform transition-transform group-hover:-translate-y-1">
+                        <p class="text-neutral-500 text-xs italic font-medium leading-snug">
+                            "Bulk order hai, kuch best rate bataiye sir?"
+                        </p>
+                        <div class="flex items-center justify-between pt-3 border-t border-neutral-50">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                                <span class="text-[9px] font-black uppercase text-neutral-400">Arjun Voice</span>
+                            </div>
+                            <div class="w-7 h-7 bg-black rounded-full flex items-center justify-center text-white text-[10px]">▶</div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 rounded-full text-blue-600 text-[10px] font-black uppercase tracking-widest mb-2">
+                        Low Latency Telephony
+                    </div>
+                    <h3 class="text-3xl font-bold tracking-tight">Live Hinglish Negotiation</h3>
+                    <p class="text-neutral-500 leading-relaxed max-w-sm">
+                        Deploy conversational agents that master the "hustle." Speak local trade languages to secure bulk discounts in real-time over phone and web.
+                    </p>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-10 items-start mb-16 reveal">
+    
+            <div class="md:col-span-7">
+                <h2 class="text-5xl md:text-6xl font-bold tracking-tighter leading-[1.1]">
+                    Deploy agents that scrape, <br> dial, and take action
+                </h2>
+            </div>
+        
+            <div class="md:col-span-4 md:col-start-9 border-l border-neutral-100 pl-8 pt-2">
+                <p class="text-[17px] text-neutral-500 leading-relaxed font-medium mb-8">
+                    Configure, deploy and monitor autonomous procurement agents in Hinglish with leading accuracy and ultra-low latency across web and telephony.
+                </p>
+            </div>
+        </div>
+    
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            
+            <div class="relative group rounded-[40px] overflow-hidden bg-gradient-to-br from-emerald-100/40 via-blue-50/40 to-white border border-neutral-100 h-[500px] flex flex-col justify-end p-10">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-8 space-y-4">
+                    <div class="bg-white/80 backdrop-blur shadow-xl border border-white p-4 rounded-2xl self-end transform -rotate-2">
+                        <p class="text-xs font-bold">"Can I get a bulk discount?"</p>
+                    </div>
+                    <div class="bg-black text-white shadow-2xl p-4 rounded-2xl self-start transform rotate-1">
+                        <p class="text-xs font-bold">"Sure. What is your GST number?"</p>
+                    </div>
+                    <div class="bg-blue-600 text-white shadow-2xl px-6 py-3 rounded-full flex items-center gap-3">
+                        <div class="w-2 h-2 bg-white animate-pulse rounded-full"></div>
+                        <span class="text-xs font-black uppercase">Negotiation Live</span>
+                    </div>
+                </div>
+                
+                <div class="relative z-10">
+                    <h3 class="text-xl font-bold mb-2">Omnichannel Sourcing</h3>
+                    <p class="text-sm text-neutral-500 max-w-xs">
+                        Agents listen, read and interact just like humans would across phone, WhatsApp, and IndiaMart.
+                    </p>
+                </div>
+            </div>
+    
+            <div class="rounded-[40px] bg-neutral-50 border border-neutral-100 h-[500px] flex flex-col p-10">
+                <div class="flex-1 flex items-center justify-center">
+                    <div class="w-full bg-white rounded-3xl border border-neutral-200 p-8 shadow-sm">
+                        <div class="flex justify-between items-end h-32 gap-2">
+                            <div class="w-full bg-orange-100 rounded-t-lg h-[40%]"></div>
+                            <div class="w-full bg-orange-200 rounded-t-lg h-[60%]"></div>
+                            <div class="w-full bg-orange-400 rounded-t-lg h-[45%]"></div>
+                            <div class="w-full bg-orange-600 rounded-t-lg h-[90%]"></div>
+                            <div class="w-full bg-orange-300 rounded-t-lg h-[70%]"></div>
+                        </div>
+                        <div class="flex justify-between mt-4 text-[10px] font-black text-neutral-400 uppercase tracking-widest">
+                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-2">Deep Analytics</h3>
+                    <p class="text-sm text-neutral-500 max-w-xs">
+                        Easily measure success rates, price drops, and vendor reliability metrics, optimizing flows over time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="grid md:grid-cols-3 gap-6 reveal">
+    
+            <div class="bg-neutral-50 rounded-[32px] p-8 border border-neutral-100 space-y-6 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-neutral-100 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="relative z-10">
+                        <path d="M9 3H15M10 9H14M3 20L10 6V3M21 20L14 6V3" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 20H21" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M7 16H17" stroke="#10b981" stroke-width="2" opacity="0.3"/>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="font-bold text-lg">Testing</h4>
+                    <p class="text-sm text-neutral-500 leading-relaxed">Simulate negotiation scripts to validate agents behave as expected before live calls.</p>
+                </div>
+            </div>
+        
+            <div class="bg-neutral-50 rounded-[32px] p-8 border border-neutral-100 space-y-6 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-neutral-100 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="relative z-10">
+                        <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" fill="#fee2e2" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 8V12" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="16" r="1" fill="#ef4444"/>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="font-bold text-lg">Guardrails</h4>
+                    <p class="text-sm text-neutral-500 leading-relaxed">Establish clear budget limits and compliance rules that keep agent offers aligned with policy.</p>
+                </div>
+            </div>
+        
+            <div class="bg-neutral-50 rounded-[32px] p-8 border border-neutral-100 space-y-6 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-neutral-100 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="relative z-10">
+                        <path d="M5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3Z" stroke="#3b82f6" stroke-width="2" opacity="0.2"/>
+                        <circle cx="7" cy="7" r="2" fill="#3b82f6"/>
+                        <circle cx="17" cy="17" r="2" fill="#3b82f6"/>
+                        <path d="M9 7H13C15.2091 7 17 8.79086 17 11V15" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="font-bold text-lg">Workflows</h4>
+                    <p class="text-sm text-neutral-500 leading-relaxed">Connect securely to your existing ERP systems to sync new vendor data and pricing automatically.</p>
+                </div>
+            </div>
+        
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-24 reveal">
+        <div class="text-center mb-16 space-y-6">
+            <h2 class="text-4xl font-bold tracking-tight">Showcasing the impact of <br> autonomous B2B sourcing</h2>
+            
+            <div class="inline-flex p-1 bg-neutral-100 rounded-full border border-neutral-200">
+                <button id="sourcingTab" onclick="switchImpact('sourcing')" class="px-6 py-2 rounded-full text-xs font-bold bg-white shadow-sm transition-all duration-300">Sourcing Wins</button>
+                <button id="negotiationTab" onclick="switchImpact('negotiation')" class="px-6 py-2 rounded-full text-xs font-bold text-neutral-400 hover:text-black transition-all duration-300">Negotiation Results</button>
+            </div>
+        </div>
+    
+        <div id="impactGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[600px] transition-all duration-500">
+            </div>
+    </section>
+
+    <footer class="bg-white border-t border-neutral-100 pt-24 pb-12">
+        <div class="max-w-6xl mx-auto px-6 mb-20">
+            <div class="bg-white border border-neutral-100 rounded-[32px] p-8 md:p-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 shadow-sm">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tighter text-center md:text-left">
+                    The most advanced B2B sourcing platform
+                </h2>
+                <a href="signup.html" 
+                class="inline-block bg-black text-white px-8 py-3.5 rounded-full font-bold hover:scale-105 active:scale-95 transition-all whitespace-nowrap text-center">
+                 Launch an agent
+                </a>
+            </div>
+        </div>
+    
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-6 gap-12 mb-20">
+            <div class="col-span-2 md:col-span-1">
+                <span class="font-black text-xl tracking-tighter block mb-6">Sniper</span>
+                <div class="flex items-center gap-2 text-neutral-400 hover:text-black cursor-pointer transition-colors">
+                    <span class="text-sm font-bold">🌐 English</span>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+            </div>
+    
+            <div class="space-y-4">
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-neutral-400">Sniper Engines</h4>
+                <ul class="text-sm font-medium text-neutral-500 space-y-3">
+                    <li><a href="#" class="hover:text-black transition-colors">I Sourcing</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">II Negotiator</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Voice Lab</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Hinglish Model</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Real-time Stats</a></li>
+                </ul>
+            </div>
+    
+            <div class="space-y-4">
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-neutral-400">Sniper API</h4>
+                <ul class="text-sm font-medium text-neutral-500 space-y-3">
+                    <li><a href="#" class="hover:text-black transition-colors">API Reference</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Scraper API</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Voice Webhooks</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">GraphQL Explorer</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">API Key</a></li>
+                </ul>
+            </div>
+    
+            <div class="space-y-4">
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-neutral-400">Resources</h4>
+                <ul class="text-sm font-medium text-neutral-500 space-y-3">
+                    <li><a href="#" class="hover:text-black transition-colors">Blog</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Case Studies</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Help Center</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Webinars</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Docs</a></li>
+                </ul>
+            </div>
+    
+            <div class="space-y-4">
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-neutral-400">Socials</h4>
+                <ul class="text-sm font-medium text-neutral-500 space-y-3">
+                    <li><a href="#" class="hover:text-black transition-colors">X (Twitter)</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">LinkedIn</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">GitHub</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">YouTube</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Discord</a></li>
+                </ul>
+            </div>
+    
+            <div class="space-y-4">
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-neutral-400">Company</h4>
+                <ul class="text-sm font-medium text-neutral-500 space-y-3">
+                    <li><a href="#" class="hover:text-black transition-colors">About</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Careers</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Safety</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Terms</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="max-w-6xl mx-auto px-6 border-t border-neutral-50 pt-12 text-center md:text-left">
+            <p class="text-[10px] font-bold text-neutral-300 uppercase tracking-widest">
+                © 2026 Sniper. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

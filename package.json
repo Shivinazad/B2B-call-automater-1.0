@@ -1,0 +1,13 @@
+{
+  "name": "hacknwin",
+  "version": "1.0.0",
+  "description": "Sniper – B2B AI sourcing agent landing + auth pages",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["sniper", "b2b", "sourcing"],
+  "author": "",
+  "license": "MIT"
+}

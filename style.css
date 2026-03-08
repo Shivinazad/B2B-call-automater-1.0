@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Sharp Solid Orange Palette */
+:root {
+    --brand-orange-main: #ea580c;  /* Primary Orange */
+    --brand-orange-dark: #9a3412;  /* Deep Burnt Orange */
+    --brand-orange-light: #ffedd5; /* Soft Peach (for badges) */
+    --card-border: #e5e5e5;
+}
+
+/* Update any existing blue utility overrides */
+.bg-blue-600 { background-color: var(--brand-orange-main) !important; }
+.bg-blue-700 { background-color: var(--brand-orange-dark) !important; }
+.text-blue-600 { color: var(--brand-orange-main) !important; }
+
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #000;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar for the Log */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #eee;
+    border-radius: 10px;
+}
+
+/* Log Entry Animations */
+.log-entry {
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+/* Premium Motion Curves */
+.transition-all {
+    transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Ensure the pill doesn't flicker on page load */
+/* Smooth Pill Transition */
+#navPill {
+    /* Base State (Log in) */
+    background-color: #000000; 
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                background-color 0.4s ease;
+    will-change: transform, background-color;
+}
+
+/* Orange State for Sign up */
+#navPill.pill-orange {
+    background-color: #ea580c; /* Sarvam-inspired Orange */
+}
+
+/* Text Color Logic */
+.pill-active-text {
+    color: #ffffff !important;
+}
+
+.pill-inactive-text {
+    color: #a3a3a3 !important; /* Neutral-400 */
+}
+/* Sarvam-inspired Orangish Navbar */
+nav.fixed {
+    /* Subtle Orange Gradient Background */
+    background: linear-gradient(180deg, 
+        rgba(255, 230, 213, 0.9) 0%, 
+        rgba(255, 255, 255, 0.95) 100%
+    );
+    border-bottom: 1px solid rgba(234, 88, 12, 0.1); /* Subtle orange border */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: all 0.4s ease;
+}
+
+/* Inner Container Styles */
+.nav-container {
+    background: white;
+    border: 1px solid #fed7aa; /* Light Orange Border */
+    box-shadow: 0 4px 20px rgba(234, 88, 12, 0.05); /* Soft Orange Glow */
+}
+
+/* Hover effect for Nav Links */
+.nav-link:hover {
+    color: #ea580c !important; /* Brand Orange */
+    background: #fff7ed;
+    border-radius: 99px;
+}
+
+/* Light text when active */
+.text-active {
+    color: white !important;
+}
+
+/* Dark text when inactive */
+.text-inactive {
+    color: #737373 !important; /* Neutral-500 */
+}
+
+/* Base style for the logo items */
+.logo-item {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 900;
+    color: #d4d4d4; /* Neutral-300 grayscale */
+    transition: all 0.3s ease;
+    cursor: default;
+    user-select: none;
+}
+
+/* --- Signature Colors on Hover --- */
+.hover-ludhiana:hover { color: #0d9488; } /* Teal */
+.hover-gujarat:hover  { color: #374151; } /* Steel Grey */
+.hover-tata:hover     { color: #1d40af; } /* Tata Blue */
+.hover-reliance:hover { color: #005691; } /* Reliance Blue */
+.hover-zomato:hover   { color: #cb202d; } /* Zomato Red */
+.hover-adani:hover    { color: #0054a6; } /* Adani Blue */
+
+/* Add a slight lift effect on hover */
+.logo-item:hover {
+    transform: translateY(-2px);
+}
+
+/* --- Leftward Marquee Animation --- */
+.animate-marquee {
+    animation: marqueeLeft 30s linear infinite;
+}
+
+.animate-marquee2 {
+    animation: marqueeLeft2 30s linear infinite;
+}
+
+/* Pause animation on hover for better UX */
+.group:hover .animate-marquee,
+.group:hover .animate-marquee2 {
+    animation-play-state: paused;
+}
+
+@keyframes marqueeLeft {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes marqueeLeft2 {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+}
+
+/* Edge Fades (makes the logos fade in/out at the sides) */
+.group::before, .group::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+}
+.group::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+.group::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mesh Gradient for the Left Card (Sourcing) */
+.bg-gradient-mesh {
+    background-color: #ffffff;
+    background-image: 
+        radial-gradient(at 100% 0%, hsla(210,100%,93%,1) 0)
+        radial-gradient(at 0% 100%, hsla(25,100%,93%,1) 0);
+}
+
+/* Rounded Card Logic */
+.rounded-feature {
+    border-radius: 40px;
+}
+
+/* Ensure the grid has space even before the JS loads content */
+#impactGrid {
+    min-height: 600px; /* Matches the height of your tall cards */
+    display: grid;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Ensure the container is visible if using reveal classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Masonry Aspect Ratios */
+@media (min-width: 768px) {
+    .grid-cols-3 {
+        grid-template-rows: repeat(2, 300px);
+    }
+}
+
+/* Smooth Scale for Group Hover */
+.group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; scale: 0.98; }
+    to { opacity: 1; scale: 1; }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#impactGrid {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Endless Loop Animation */
+.animate-marquee {
+    animation: marquee-loop 30s linear infinite;
+}
+
+@keyframes marquee-loop {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Pause on hover to let users read the brands */
+.group:hover .animate-marquee {
+    animation-play-state: paused;
+}
+
+.logo-item {
+    font-weight: 900;
+    color: #d4d4d4;
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+    cursor: default;
+}
+
+/* .logo-item:hover {
+    color: #171717;
+} */
+
+/* Gradient Adjustments */
+.bg-gradient-to-t {
+    background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
+
+
+/* Pulse states for status dots */
+.pulse-blue { background-color: #000; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+.pulse-orange { background-color: #FF8A00; }
+.pulse-green { background-color: #00C853; }

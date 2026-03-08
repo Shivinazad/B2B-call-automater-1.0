@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sniper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white font-sans text-gray-900 min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 flex justify-center">
+        <div class="w-full max-w-6xl mt-4 flex items-center justify-between bg-white border border-orange-200 px-6 py-3 rounded-full shadow-lg shadow-orange-500/5 nav-container">
+            <span class="font-black text-xl tracking-tighter text-black">Sniper</span>
+            <div class="flex items-center gap-3">
+                <span id="userEmail" class="text-xs font-bold text-neutral-400"></span>
+                <button onclick="logout()" class="text-xs font-black uppercase tracking-widest text-neutral-400 hover:text-orange-600 transition-colors">Log out</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
+        <div class="mb-10">
+            <h1 class="text-5xl font-bold tracking-tight leading-tight">Welcome to Sniper</h1>
+            <p class="text-neutral-400 text-lg mt-3">Your AI-powered B2B sourcing agent is ready.</p>
+        </div>
+
+        <!-- Quick-start cards -->
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-neutral-50 border border-neutral-100 rounded-3xl p-8 space-y-4 hover:shadow-md transition-all">
+                <div class="w-10 h-10 bg-black rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-xl">Source Vendors</h3>
+                <p class="text-neutral-500 text-sm leading-relaxed">Find verified B2B suppliers across India instantly.</p>
+                <button class="text-xs font-black uppercase tracking-widest text-orange-600 hover:underline">Launch Agent →</button>
+            </div>
+
+            <div class="bg-neutral-50 border border-neutral-100 rounded-3xl p-8 space-y-4 hover:shadow-md transition-all">
+                <div class="w-10 h-10 bg-orange-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-xl">Negotiate Deals</h3>
+                <p class="text-neutral-500 text-sm leading-relaxed">Auto-call vendors and close the best price automatically.</p>
+                <button class="text-xs font-black uppercase tracking-widest text-orange-600 hover:underline">Start Calling →</button>
+            </div>
+
+            <div class="bg-neutral-50 border border-neutral-100 rounded-3xl p-8 space-y-4 hover:shadow-md transition-all">
+                <div class="w-10 h-10 bg-neutral-800 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-xl">View Reports</h3>
+                <p class="text-neutral-500 text-sm leading-relaxed">Track savings, verified vendors, and deal history.</p>
+                <button class="text-xs font-black uppercase tracking-widest text-orange-600 hover:underline">View Reports →</button>
+            </div>
+        </div>
+
+        <!-- Savings summary -->
+        <div class="mt-10 bg-gradient-to-br from-orange-50 to-white border border-orange-100 rounded-3xl p-10 flex flex-col md:flex-row gap-10 items-center">
+            <div class="flex-1">
+                <p class="text-xs font-black uppercase tracking-widest text-orange-500 mb-2">Your Total Savings</p>
+                <p class="text-6xl font-bold tracking-tighter">₹0</p>
+                <p class="text-neutral-400 text-sm mt-2">No deals closed yet. Launch your first agent to start saving.</p>
+            </div>
+            <button onclick="window.location.href='/'" class="bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-all">
+                Back to Home
+            </button>
+        </div>
+    </main>
+
+    <script>
+        function logout() {
+            window.location.href = '/login.html';
+        }
+    </script>
+</body>
+</html>
