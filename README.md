@@ -107,18 +107,24 @@ User Input (Natural Language)
 ### Prerequisites
 - Node.js ≥ 18
 
-### Run locally in 2 steps
+### Option 1 — Landing pages (zero dependencies)
 
 ```bash
-# 1. Clone the repo
 git clone https://github.com/Shivinazad/B2B-call-automater-1.0.git
 cd B2B-call-automater-1.0
-
-# 2. Start the server
 node server.js
+# Open http://localhost:3000
 ```
 
-Open **http://localhost:3000** in your browser. That's it — no build step, no `npm install`.
+### Option 2 — Full Next.js app
+
+```bash
+cd sniper-app
+cp .env.example .env.local     # fill in your API keys
+npm install
+npm run dev
+# Open http://localhost:3002
+```
 
 ---
 
@@ -133,8 +139,13 @@ B2B-call-automater-1.0/
 ├── server.js         # ⚙️  Node.js HTTP server + REST API
 ├── style.css         # 🎨 Global styles, animations & brand palette
 ├── script.js         # 🧠 Client-side logic: agent log, deal counter
-├── package.json      # 📦 Project metadata
-└── .gitignore
+├── package.json      # 📦 Project metadata (landing)
+└── sniper-app/       # 🚀 Full-stack Next.js production app
+    ├── app/          #    Pages + 10 REST API routes
+    ├── components/   #    React UI components
+    ├── lib/          #    Gemini AI, scrapers, voice, payments
+    ├── prisma/       #    Database schema (Prisma ORM)
+    └── store/        #    Global state (Zustand)
 ```
 
 ---
@@ -172,7 +183,33 @@ Captures a login or signup event.
 
 ---
 
-## 🔮 Roadmap
+## � Repository Structure
+
+This repo contains **two projects**:
+
+```
+B2B-call-automater-1.0/
+├── index.html          # 🌐 Marketing landing page (vanilla)
+├── login.html          # 🔑 Login
+├── signup.html         # 📝 Signup
+├── dashboard.html      # 📊 Dashboard
+├── server.js           # ⚙️  Node.js dev server
+├── style.css / script.js
+│
+└── sniper-app/         # 🚀 Full Next.js production app
+    ├── app/            #    App Router pages + 10 API routes
+    ├── components/     #    React UI components
+    ├── lib/            #    AI, scraping, voice, payments libs
+    ├── prisma/         #    Database schema (Prisma ORM)
+    └── store/          #    Zustand state management
+```
+
+> **Landing pages** (`/`) are the polished demo layer shown to investors/judges.  
+> **`sniper-app/`** is the full production-grade Next.js backend with real AI integrations.
+
+---
+
+## �🔮 Roadmap
 
 - [ ] Connect to live IndiaMart scraper API
 - [ ] Integrate Twilio / VAPI for real AI voice calls
