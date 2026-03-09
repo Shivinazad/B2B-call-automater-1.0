@@ -25,7 +25,7 @@ Indian SMBs and procurement teams spend **60–80% of their time** manually sear
 
 Sniper is a **fully autonomous B2B procurement agent** that does all of this in minutes:
 
-1. **Scrapes IndiaMart** for relevant vendors based on your natural-language query
+1. **Scrapes IndiaMart like sites** for relevant vendors based on your natural-language query
 2. **Verifies GSTIN** for each vendor in real-time
 3. **Auto-dials vendors** using an AI voice agent
 4. **Negotiates price** autonomously using live sentiment analysis
@@ -38,7 +38,7 @@ Sniper is a **fully autonomous B2B procurement agent** that does all of this in 
 **Live input:** *"Find me 500 cotton hoodies in Ludhiana under ₹180"*
 
 The agent then:
-- Searches IndiaMart B2B directory
+- Searches major vending sites' B2B directory
 - Filters by GST verified vendors
 - Dials the best match
 - Shows live savings in the dashboard
@@ -211,7 +211,7 @@ B2B-call-automater-1.0/
 
 ## �🔮 Roadmap
 
-- [ ] Connect to live IndiaMart scraper API
+- [ ] Connect to live IndiaMart like sites scraper API
 - [ ] Integrate Twilio / VAPI for real AI voice calls
 - [ ] Add Razorpay / Stripe subscription billing
 - [ ] Export deal reports as PDF
@@ -220,12 +220,7 @@ B2B-call-automater-1.0/
 
 ---
 
-## 👥 Team
+Built with ❤️ at CGC's HACK-N-WIN 3.0 — March 2026
 
-Built with ❤️ at a Hackathon — March 2026
 
----
 
-## 📄 License
-
-MIT © 2026 Sniper
